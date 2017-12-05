@@ -19,9 +19,11 @@ interface ITest {
 }
 
 class Preview implements ITest {
+  static var regex = ~/[a-zA-Z]/g;
+
   public function new(i, dummy:Null<Bool> = null):Void {
     var adj = test(i);
-    trace('Haxe is $adj: $i!'.toUpperCase());
+    trace('Haxe is ${adj}: $i!'.toUpperCase());
   }
   
   public function test(i:Int):Adjective {
