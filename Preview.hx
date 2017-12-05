@@ -1,11 +1,16 @@
 /**
  * Preview.hx
+ *
+ * @see https://github.com/azrafe7/Haxe-for-Notepad-plusplus
+ * @author azrafe7
  */
 package;
+
 import Lambda as Lmd;
 using StringTools;
 
 #if ERR 
+  // FIXME
   #error "no good!"
 #end
 
