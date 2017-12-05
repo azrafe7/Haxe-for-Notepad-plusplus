@@ -9,7 +9,7 @@ Just an xml file that gives you syntax highlighting/coloring for .hx files insid
 
 How to Use it
 -------------
- - Download the [haxe.xml]() file
+ - Download the [haxe.xml](haxe.xml) file
  - Open Notepad++
  - Go to  `Language -> Define your language...`,  click on  `Import...` and select the `haxe.xml` file you've downloaded
  - Close and restart Notepad++
@@ -29,4 +29,4 @@ Use it however you like it.
 
 LICENSE (MIT)
 -------------
-See [LICENSE]().
+See [LICENSE](LICENSE).
