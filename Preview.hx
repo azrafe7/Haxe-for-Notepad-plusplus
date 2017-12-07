@@ -19,16 +19,17 @@ interface ITest {
 }
 
 @:enum abstract Adjective(String) to String {
-  var GREAT = "great";
+  var GREAT = "grea";
   var HAXEY = "haxey";
 }
 
 class Preview implements ITest {
   static var regex = ~/[a-zA-Z]/g;
-
+  var i64:haxe.Int64;
+  
   public function new(i, dummy:Null<Bool> = null):Void {
     var adj = test(i);
-    trace('Haxe is ${Std.string(adj)}: $i!'.toUpperCase());
+    trace('Haxe is ${Std.string(adj + "" + 7)}: $i!'.toUpperCase());
   }
   
   public function test(i:Int):Adjective {
