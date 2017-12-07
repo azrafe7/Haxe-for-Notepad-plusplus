@@ -26,7 +26,7 @@
             <Keywords name="Folders in comment, close">//}</Keywords>
             <Keywords name="Keywords1">break callback case catch class continue default do else enum extends for function if implements import in interface new package return switch throw try typedef using var while abstract is as final</Keywords>
             <Keywords name="Keywords2">null true false get set never default&#x000D;&#x000A;</Keywords>
-            <Keywords name="Keywords3">Void Int Float Dynamic Bool UInt Iterator Array List Hash IntHash Date String Xml Map Int64 Bytes Math Std Null</Keywords>
+            <Keywords name="Keywords3">Void Int Float Dynamic Bool Iterator Hash IntHash Int64 Bytes Null &#x000D;&#x000A;&#x000D;&#x000A;Any Array Class Date DateTools Enum EnumValue EReg IntIterator Lambda List Map Math Reflect Std StdTypes String StringBuf StringTools Sys Type UInt Xml</Keywords>
             <Keywords name="Keywords4">dynamic extern inline override private public static untyped cast trace super this arguments from to macro arrayAccess optional $type</Keywords>
             <Keywords name="Keywords5"># @</Keywords>
             <Keywords name="Keywords6">$v $i $a $b $p $e $</Keywords>
