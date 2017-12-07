@@ -28,7 +28,7 @@ class Preview implements ITest {
 
   public function new(i, dummy:Null<Bool> = null):Void {
     var adj = test(i);
-    trace('Haxe is ${adj}: $i!'.toUpperCase());
+    trace('Haxe is ${Std.string(adj)}: $i!'.toUpperCase());
   }
   
   public function test(i:Int):Adjective {
