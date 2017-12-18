@@ -106,6 +106,7 @@ function updateUdlValue(id, json, value) {
   if (!UPDATE_UDL) return;
   var sel = getUdlSelection(json);
   if (sel) {
+    if (json.type === "color") value = value.substr(1).toUpperCase(); // strip leading '#'
     sel.attr(json.udlAttr, value);
     resetUdl(clonedUdl);
   }
