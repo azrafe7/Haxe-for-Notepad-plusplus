@@ -53,8 +53,36 @@ function main() {
   $previewPanel = $("#preview-panel");
   $udlPanel = $("#udl-panel");
 
-  $("button#reset-all").click(function() { resetAll(); });
+  $("button#reset-all").click(function(e) { resetAll(); e.preventDefault(); });
+  $("button#export-udl").click(function(e) { exportUdl(); e.preventDefault(); });
   loadPrevieHtml().then(loadUdlBaseFile()).then(loadUdl2CssJson());
+}
+
+// https://stackoverflow.com/questions/2897619/using-html5-javascript-to-generate-and-save-a-file#answer-18197511
+function download(filename, text) {
+  var pom = document.createElement('a');
+  pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  pom.setAttribute('download', filename);
+
+  if (document.createEvent) {
+    var event = document.createEvent('MouseEvents');
+    event.initEvent('click', true, true);
+    pom.dispatchEvent(event);
+  }
+  else {
+    pom.click();
+  }
+}
+
+function exportUdl() {
+  var tempXml = cloneXml(clonedUdl);
+  //console.log(xmlSerializer.serializeToString(tempXml));
+  $(tempXml).find('Settings').html($(originalUdl).find('Settings').html());
+  $(tempXml).find('KeywordLists').html($(originalUdl).find('KeywordLists').html());
+  var exportData = xmlSerializer.serializeToString(tempXml);
+  //console.log(exportData);
+  var langName = $(clonedUdl).find('UserLang').attr('name');
+  download(langName + ".xml", exportData);
 }
 
 function resetAll() {
@@ -230,6 +258,7 @@ function resetSettings(json) {
   
   addPagination();
   $("button#reset-all").removeClass("disabled");
+  $("button#export-udl").removeClass("disabled");
 }
 
 var $slider;
@@ -272,13 +301,18 @@ function addPagination() {
   $settingsPanel.append($tabs);
 }
 
+function cloneXml(xml) {
+  var xmlString = xmlSerializer.serializeToString(xml);
+  var clone = $.parseXML(xmlString);
+  return clone;
+}
+
 function resetUdl(xmlData, force = false) {
   if (!originalUdl || force) {
     originalUdl = xmlData;
-    var data = xmlSerializer.serializeToString(originalUdl);
     
     // clone and remove some sections
-    clonedUdl = $.parseXML(data);
+    clonedUdl = cloneXml(xmlData);
     $(clonedUdl).find('Settings, KeywordLists').html("...");
   }
   
