@@ -25,6 +25,11 @@ Here's a preview of how it looks like:
 
 Thanks to [@yellowafterlife](https://yal.cc/notepad-pp-syntax-highlighting-for-haxe-2/) for the original work, and to the contributors of [haxe-TmLanguage](https://github.com/vshaxe/haxe-TmLanguage/).
 
+UDL 2.1 Themer
+--------------
+You can customize the theme in the browser with this [little tool](https://rawgit.com/azrafe7/Haxe-for-Notepad-plusplus/master/themer/themer.html) (WIP).
+
+
 Use it however you like it. 
 
 LICENSE (MIT)
