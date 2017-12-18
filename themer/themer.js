@@ -53,8 +53,8 @@ function main() {
   $previewPanel = $("#preview-panel");
   $udlPanel = $("#udl-panel");
 
-  $("button#reset-all").click(function(e) { resetAll(); e.preventDefault(); });
-  $("button#export-udl").click(function(e) { exportUdl(); e.preventDefault(); });
+  $("button#reset-all").click(function(e) { resetAll(); e.preventDefault(); $(this).blur(); });
+  $("button#export-udl").click(function(e) { exportUdl(); e.preventDefault(); $(this).blur(); });
   loadPrevieHtml().then(loadUdlBaseFile()).then(loadUdl2CssJson());
 }
 

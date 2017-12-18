@@ -36,6 +36,8 @@ pre {
 
 #settings-panel .sc {
   text-transform: uppercase;
+  /*font-family: monospace;
+  font-weight: bold;*/
 }
 
 /*hide alpha slider*/
