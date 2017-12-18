@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'DejaVu Sans Mono';
+	font-size: 10pt;
+	color: #BDAE9D; // default text
+}
+.sc0 {
+	color: #FFFFFF; // operators
+}
+.sc1 {
+	color: #8F8B76; // comments
+}
+.sc2 {
+	color: #8F8B76; // line comments
+}
+.sc3 {
+	color: #7BC654; // numbers
+}
+.sc4 {
+	color: #FFEE80; // keywords: break,case,for,var... (kw1)
+}
+.sc5 {
+	color: #B6A129; // null true get default (kw2)
+}
+.sc6 {
+	color: #FFFFC1; // types & top-level: Void,Int,...Any,Std,Math (kw3)
+}
+.sc7 {
+	color: #FFEE80; // modifiers: dynamic,inline,this,macro... (kw4)
+}
+.sc8 {
+	color: #FF8040; // # @ prefix (kw5)
+}
+.sc10 {
+	color: #FFFFFF; // ?
+}
+.sc11 {
+	color: #BEB2A8; // net-protocols & javadoc & TODO: https:/,@see,TODO (kw8)
+}
+.sc12 {
+	color: #FFFFFF;
+}
+.sc13 {
+	color: #FFFFFF;
+}
+.sc14 {
+	color: #D15F2E; // #if #else #end (folding code 2)
+}
+.sc16 {
+	color: #EEA382; // string interp '' (delimiters1)
+}
+.sc17 {
+	color: #D38B38; // string "" (delimiters2)
+}
+.sc18 {
+	color: #56B6EF; // regex ~// (delimiters3)
+}
+.sc19 {
+	color: #FFFFFF;
+}
+.sc24 {
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #2A211C; "><span class="sc1">/**
+ * Preview.hx
+ *
+ * </span><span class="sc11">@see</span><span class="sc1"> </span><span class="sc11">https://github.com/azrafe7/Haxe-for-Notepad-plusplus</span><span class="sc1">
+ * </span><span class="sc11">@author</span><span class="sc1"> azrafe7
+ */</span><span class="sc24">
+</span><span class="sc4">package</span><span class="sc12">;</span><span class="sc24">
+
+</span><span class="sc4">import</span><span class="sc24"> </span><span class="sc6">Lambda</span><span class="sc24"> </span><span class="sc4">as</span><span class="sc24"> </span><span class="sc0">Lmd</span><span class="sc12">;</span><span class="sc24">
+</span><span class="sc4">using</span><span class="sc24"> </span><span class="sc6">StringTools</span><span class="sc12">;</span><span class="sc24">
+
+</span><span class="sc14">#if</span><span class="sc24"> </span><span class="sc0">ERR</span><span class="sc24"> 
+  </span><span class="sc2">// </span><span class="sc11">FIXME</span><span class="sc2">
+</span><span class="sc24">  </span><span class="sc8">#error</span><span class="sc24"> </span><span class="sc17">"no good!"</span><span class="sc24">
+</span><span class="sc14">#end</span><span class="sc24">
+
+</span><span class="sc4">interface</span><span class="sc24"> </span><span class="sc0">ITest</span><span class="sc24"> </span><span class="sc13">{</span><span class="sc24">
+  </span><span class="sc4">function</span><span class="sc24"> </span><span class="sc0">test</span><span class="sc12">(</span><span class="sc0">i</span><span class="sc12">:</span><span class="sc6">Int</span><span class="sc12">):</span><span class="sc0">Adjective</span><span class="sc12">;</span><span class="sc24">
+</span><span class="sc13">}</span><span class="sc24">
+
+</span><span class="sc8">@</span><span class="sc12">:</span><span class="sc4">enum</span><span class="sc24"> </span><span class="sc4">abstract</span><span class="sc24"> </span><span class="sc0">Adjective</span><span class="sc12">(</span><span class="sc6">String</span><span class="sc12">)</span><span class="sc24"> </span><span class="sc7">to</span><span class="sc24"> </span><span class="sc6">String</span><span class="sc24"> </span><span class="sc13">{</span><span class="sc24">
+  </span><span class="sc4">var</span><span class="sc24"> </span><span class="sc0">GREAT</span><span class="sc24"> </span><span class="sc12">=</span><span class="sc24"> </span><span class="sc17">"grea"</span><span class="sc12">;</span><span class="sc24">
+  </span><span class="sc4">var</span><span class="sc24"> </span><span class="sc0">HAXEY</span><span class="sc24"> </span><span class="sc12">=</span><span class="sc24"> </span><span class="sc17">"haxey"</span><span class="sc12">;</span><span class="sc24">
+</span><span class="sc13">}</span><span class="sc24">
+
+</span><span class="sc4">class</span><span class="sc24"> </span><span class="sc0">Preview</span><span class="sc24"> </span><span class="sc4">implements</span><span class="sc24"> </span><span class="sc0">ITest</span><span class="sc24"> </span><span class="sc13">{</span><span class="sc24">
+  </span><span class="sc7">static</span><span class="sc24"> </span><span class="sc4">var</span><span class="sc24"> </span><span class="sc0">regex</span><span class="sc24"> </span><span class="sc12">=</span><span class="sc24"> </span><span class="sc18">~/[a-zA-Z]/</span><span class="sc0">g</span><span class="sc12">;</span><span class="sc24">
+  </span><span class="sc4">var</span><span class="sc24"> </span><span class="sc0">i64</span><span class="sc12">:</span><span class="sc0">haxe</span><span class="sc12">.</span><span class="sc6">Int64</span><span class="sc12">;</span><span class="sc24">
+  
+  </span><span class="sc7">public</span><span class="sc24"> </span><span class="sc4">function</span><span class="sc24"> </span><span class="sc4">new</span><span class="sc12">(</span><span class="sc0">i</span><span class="sc12">,</span><span class="sc24"> </span><span class="sc0">dummy</span><span class="sc12">:</span><span class="sc6">Null</span><span class="sc12">&lt;</span><span class="sc6">Bool</span><span class="sc12">&gt;</span><span class="sc24"> </span><span class="sc12">=</span><span class="sc24"> </span><span class="sc5">null</span><span class="sc12">):</span><span class="sc6">Void</span><span class="sc24"> </span><span class="sc13">{</span><span class="sc24">
+    </span><span class="sc4">var</span><span class="sc24"> </span><span class="sc0">adj</span><span class="sc24"> </span><span class="sc12">=</span><span class="sc24"> </span><span class="sc0">test</span><span class="sc12">(</span><span class="sc0">i</span><span class="sc12">);</span><span class="sc24">
+    </span><span class="sc7">trace</span><span class="sc12">(</span><span class="sc16">'Haxe is </span><span class="sc19">${</span><span class="sc6">Std</span><span class="sc12">.</span><span class="sc19">string</span><span class="sc12">(</span><span class="sc19">adj </span><span class="sc12">+</span><span class="sc19"> </span><span class="sc17">""</span><span class="sc19"> </span><span class="sc12">+</span><span class="sc19"> </span><span class="sc3">7</span><span class="sc12">)</span><span class="sc19">}</span><span class="sc16">: </span><span class="sc10">$i!</span><span class="sc16">'</span><span class="sc12">.</span><span class="sc0">toUpperCase</span><span class="sc12">());</span><span class="sc24">
+  </span><span class="sc13">}</span><span class="sc24">
+  
+  </span><span class="sc7">public</span><span class="sc24"> </span><span class="sc4">function</span><span class="sc24"> </span><span class="sc0">test</span><span class="sc12">(</span><span class="sc0">i</span><span class="sc12">:</span><span class="sc6">Int</span><span class="sc12">):</span><span class="sc0">Adjective</span><span class="sc24"> </span><span class="sc13">{</span><span class="sc24">
+    </span><span class="sc4">return</span><span class="sc24"> </span><span class="sc4">switch</span><span class="sc24"> </span><span class="sc12">(</span><span class="sc0">i</span><span class="sc12">)</span><span class="sc24"> </span><span class="sc13">{</span><span class="sc24">
+      </span><span class="sc4">case</span><span class="sc24"> </span><span class="sc3">42</span><span class="sc12">:</span><span class="sc24"> </span><span class="sc0">GREAT</span><span class="sc12">;</span><span class="sc24">
+      </span><span class="sc4">default</span><span class="sc12">:</span><span class="sc24"> </span><span class="sc0">HAXEY</span><span class="sc12">;</span><span class="sc24">
+    </span><span class="sc13">}</span><span class="sc24">
+  </span><span class="sc13">}</span><span class="sc24">
+ 
+  </span><span class="sc2">// Entry point
+</span><span class="sc24">  </span><span class="sc7">static</span><span class="sc24"> </span><span class="sc7">public</span><span class="sc24"> </span><span class="sc4">function</span><span class="sc24"> </span><span class="sc0">main</span><span class="sc12">()</span><span class="sc24"> </span><span class="sc13">{</span><span class="sc24">
+    </span><span class="sc4">new</span><span class="sc24"> </span><span class="sc0">Preview</span><span class="sc12">(</span><span class="sc3">0x2a</span><span class="sc12">,</span><span class="sc24"> </span><span class="sc5">false</span><span class="sc12">);</span><span class="sc24">
+  </span><span class="sc13">}</span><span class="sc24">
+</span><span class="sc13">}</span></div></body>
+</html>

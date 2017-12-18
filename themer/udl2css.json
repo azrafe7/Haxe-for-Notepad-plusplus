@@ -1,12 +1,13 @@
 {
   "desc": "Haxe theme for Notepad++ (UDL 2.1)",
   "name": "Haxe_",
-  "base": "https://github.com/azrafe7/Haxe-for-Notepad-plusplus/blob/f1ae20620b13e2a4ab1108084dd4b7a47423d3fb/haxe.xml",
+  "base":
+    "https://github.com/azrafe7/Haxe-for-Notepad-plusplus/blob/f1ae20620b13e2a4ab1108084dd4b7a47423d3fb/haxe.xml",
   "previewFile": "Preview.hx.html",
   "mappings": [
     {
-      "selector": "div",
       "desc": "global background color",
+      "selector": "div",
       "style": {
         "background": "#000000"
       }
@@ -20,111 +21,97 @@
     },
     {
       "selector": ".sc0",
+      "xmlId": "DEFAULT@fgColor",
       "desc": "default text",
-      "style": {
-      }
+      "style": {}
     },
     {
       "selector": ".sc1",
+      "xmlId": "COMMENTS@fgColor",
       "desc": "block comments: /* */",
-      "style": {
-      }
+      "style": {}
     },
     {
       "selector": ".sc2",
       "desc": "line comments: //",
-      "style": {
-      }
+      "style": {}
     },
     {
       "selector": ".sc3",
       "desc": "numbers (decimals, floats and hex)",
-      "style": {
-      }
+      "udlSelector" : "NUMBERS",
+      "udlAttr": "fgColor",
+      "cssSelectors": ["
     },
     {
       "selector": ".sc4",
       "desc": "keywords: break,case,for,var... (kw1)",
-      "style": {
-      }
+      "style": {  }
     },
     {
       "selector": ".sc5",
       "desc": "special (value) keywords: null,true,get,default,... (kw2)",
-      "style": {
-      }
+      "style": {}
     },
     {
       "selector": ".sc6",
       "desc": "top-level types & modules: Void,Int,...Any,Std,Math (kw5)",
-      "style": {
-      }
+      "style": {}
     },
     {
       "selector": ".sc7",
       "desc": "modifiers: dynamic,inline,this,macro... (kw4)",
-      "style": {
-      }
+      "style": {}
     },
     {
       "selector": ".sc8",
       "desc": "ifdefs & meta-tags: #,@ prefix (kw5)",
-      "style": {
-      }
+      "style": {}
     },
     {
       "selector": ".sc10",
       "desc": "macro reification: $v,$i... (kw6)",
-      "style": {
-      }
+      "style": {}
     },
     {
       "selector": ".sc11",
       "desc": "net-protocols & javadoc & TODO: https:/,@see,TODO (kw8)",
-      "style": {
-      }
+      "style": {}
     },
     {
       "selector": ".sc12",
       "desc": "operators:',>,&,|,%,... (operators1)",
-      "style": {
-      }
+      "style": {}
     },
     {
       "selector": ".sc13",
       "desc": "code blocks: { } (folding code 1)",
-      "style": {
-      }
+      "style": {}
     },
     {
       "selector": ".sc14",
       "desc": "define guards: #if,#else,#elseif,#end (folding code 2)",
-      "style": {
-      }
+      "style": {}
     },
     {
       "selector": ".sc16",
       "desc": "string interp '' (delimiters1)",
-      "style": {
-      }
+      "style": {}
     },
     {
       "selector": ".sc17",
-      "desc": "string "" (delimiters2)",
-      "style": {
-      }
+      "desc": "string \"\" (delimiters2)",
+      "style": {}
     },
     {
       "selector": ".sc18",
       "desc": "regex ~// (delimiters3)",
-      "style": {
-      }
+      "style": {}
     },
     {
       "selector": ".sc19",
       "desc": "text in string interp: ${}",
-      "style": {
-      }
+      "style": {}
     }
   ]
 }

@@ -1,0 +1,45 @@
+body {
+  padding-top: 70px;
+}
+
+#preview-panel div:first-of-type {
+  float: none !important;
+  overflow: hidden;
+}
+
+.panel-heading {
+  cursor: pointer;
+}
+.panel-heading:hover a {
+  text-decoration: underline;
+}
+
+#udl-panel pre {
+  background: inherit;
+  border: 0px;
+  margin: 0px;
+}
+
+pre {
+  overflow: auto;
+  word-wrap: normal;
+  white-space: pre;
+}
+
+#settings-panel .form-group {
+  margin-bottom: 10px;
+}
+
+#settings-panel .tab-content {
+  padding-top: 1em;
+}
+
+/*hide alpha slider*/
+.cp-hsvpanel-a {
+  display: none !important;
+}
+.cp-container {
+  /*width: 170px !important;*/
+  width: 204px !important;
+}
+

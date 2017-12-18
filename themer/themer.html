@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>UDL 2.1 Themer</title>
+
+  <!-- Latest Bootstrap 3 compiled and minified CSS -->
+  <link rel="stylesheet" href="css/bootstrap-3.3.7.min.css">
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv-3.7.3.min.js"></script>
+    <script src="js/respond-1.4.2.min.js"></script>
+  <![endif]-->
+
+  <!-- prism (for xml syntax highlight) -->
+  <link rel="stylesheet" href="css/prism-1.9.0.css">
+
+  <!-- color picker sliders -->
+  <link rel="stylesheet" href="css/bootstrap.colorpickersliders-3.0.1.css">
+
+  <link rel="stylesheet" type="text/css" href="themer.css">
+
+</head>
+
+<body>
+
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+          aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">UDL 2.1 Themer</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <!--ul class="nav navbar-nav">
+          <li class="active">
+            <a href="#">Link
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">Link</a>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="#">Action</a>
+              </li>
+              <li>
+                <a href="#">Another action</a>
+              </li>
+              <li>
+                <a href="#">Something else here</a>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li>
+                <a href="#">Separated link</a>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li>
+                <a href="#">One more separated link</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <form class="navbar-form navbar-left">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="#">Link</a>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="#">Action</a>
+              </li>
+              <li>
+                <a href="#">Another action</a>
+              </li>
+              <li>
+                <a href="#">Something else here</a>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li>
+                <a href="#">Separated link</a>
+              </li>
+            </ul>
+          </li>
+        </ul-->
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+  </nav>
+
+  <!-- Main content -->
+  <div id="main-content" class="container-fluid">
+
+    <div class="row">
+      <!-- settings -->
+      <div class="col-xs-4">
+        <div class="panel panel-default">
+          <div class="panel-heading" data-toggle="collapse" data-target="#collapseSettings">
+            <h3 class="panel-title">
+              <a href="#collapseSettings">Settings</a>
+            </h3>
+          </div>
+          <div id="collapseSettings" class="panel-collapse collapse in">
+            <div id="settings-panel" class="panel-body">
+              Loading...
+              <div id="pagination"></div>
+              <div id="content"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-8">
+        <div class="panel-group" id="accordion">
+          <!-- preview -->
+          <div class="panel panel-default">
+            <div class="panel-heading" data-toggle="collapse" data-target="#collapseOne">
+              <h3 class="panel-title">
+                <a href="#collapseOne">Preview</a>
+              </h3>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in">
+              <div id="preview-panel" class="panel-body">
+                Loading...
+              </div>
+            </div>
+          </div>
+
+          <!-- udl -->
+          <div class="panel panel-default">
+            <div class="panel-heading" data-toggle="collapse" data-target="#collapseTwo">
+              <h3 class="panel-title">
+                <a href="#collapseTwo">UDL</a>
+              </h3>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse in">
+              <div id="udl-panel" class="panel-body">
+                Loading...
+                <!--pre><code class="language-xml"></code></pre-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /#main-content -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <!-- Latest Bootstrap 3 compiled and minified JavaScript -->
+    <script src="js/bootstrap-3.3.7.min.js"></script>
+
+    <!-- prism (for xml syntax highlight) -->
+    <script src="js/prism-1.9.0.js"></script>
+
+    <!-- color picker sliders -->
+    <script src="js/tinycolor-1.4.1.min.js"></script>
+    <script src="js/bootstrap.colorpickersliders.nocielch-3.0.1.min.js"></script>
+    <!--script src="js/bootstrap.colorpickersliders-3.0.1.js"></script-->
+    
+    <script src="themer.js"></script>
+</body>
+
+</html>
