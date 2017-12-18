@@ -13,6 +13,7 @@ var $udlPanel;
 
 var originalPreview;
 var originalUdl;
+var originalUdl2Css;
 var clonedUdl;
 var mappings;
 var tiny;
@@ -28,10 +29,8 @@ function init() {
   $udlPanel = null;
   originalPreview = null;
   originalUdl = null;
+  originalUdl2Css = null;
   clonedUdl = null;
-  mappings = null;
-  $inputs = {};
-  swatches = [];
   xmlSerializer = new XMLSerializer();
 }
 
@@ -54,7 +53,18 @@ function main() {
   $previewPanel = $("#preview-panel");
   $udlPanel = $("#udl-panel");
 
+  $("button#reset-all").click(function() { resetAll(); });
   loadPrevieHtml().then(loadUdlBaseFile()).then(loadUdl2CssJson());
+}
+
+function resetAll() {
+  resetPreview(originalPreview);
+  resetUdl(originalUdl, true);
+  resetSettings(originalUdl2Css);
+}
+
+function resetPreview(html) {
+  $previewPanel.html(html);
 }
 
 function loadPrevieHtml() {
@@ -62,7 +72,7 @@ function loadPrevieHtml() {
   xhr.done(function(data) {
     //console.log(data);
     originalPreview = data;
-    $previewPanel.html(data);
+    resetPreview(originalPreview);
     return xhr;
   });
   return xhr;
@@ -97,7 +107,7 @@ function updateUdlValue(id, json, value) {
   var sel = getUdlSelection(json);
   if (sel) {
     sel.attr(json.udlAttr, value);
-    updateUdl(clonedUdl);
+    resetUdl(clonedUdl);
   }
 }
 
@@ -192,27 +202,41 @@ function createInputFor(jsonData, value) {
   }
 }
 
+function resetSettings(json) {
+  //console.log(json);
+  if (!originalUdl2Css) {
+    originalUdl2Css = json;
+  }
+  
+  mappings = json.mappings;
+  $settingsPanel.empty();
+  swatches = [];
+  $inputs = {};
+  inputID = 0;
+  
+  // first time (create)
+  for (var i = 0; i < mappings.length; i++) {
+    var item = json.mappings[i];
+    var formEl = createInputFor(item);
+    //$settingsPanel.append(formEl);
+    
+    var id = $(formEl).find('input').attr('id');
+    var $input = $inputs[id];
+    $input.update($input.el.val());
+
+    //console.log(item);
+  }
+  
+  addPagination();
+  $("button#reset-all").removeClass("disabled");
+}
+
 var $slider;
 function loadUdl2CssJson() {
   var xhr = fetchUrl(udl2cssFile, $settingsPanel, 'json');
   xhr.done(function(data) {
-    mappings = data.mappings;
-    $settingsPanel.empty();
-    //console.log(data);
-    for (var i = 0; i < mappings.length; i++) {
-      var item = data.mappings[i];
-      var formEl = createInputFor(item);
-      //$settingsPanel.append(formEl);
-      
-      var id = $(formEl).find('input').attr('id');
-      var $input = $inputs[id];
-      $input.update($input.el.val());
-
-      //console.log(item);
-    }
+    resetSettings(data);
     
-    addPagination();
-
     return xhr;
   });
 
@@ -247,8 +271,8 @@ function addPagination() {
   $settingsPanel.append($tabs);
 }
 
-function updateUdl(xmlData) {
-  if (!originalUdl) {
+function resetUdl(xmlData, force = false) {
+  if (!originalUdl || force) {
     originalUdl = xmlData;
     var data = xmlSerializer.serializeToString(originalUdl);
     
@@ -269,7 +293,7 @@ function loadUdlBaseFile() {
   var xhr = fetchUrl(udlBaseFile, $udlPanel, "xml");
   xhr.done(function(data) {
     //console.log(data);
-    updateUdl(data);
+    resetUdl(data);
     return xhr;
   });
 
