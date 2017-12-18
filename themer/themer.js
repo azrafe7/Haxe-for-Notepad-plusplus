@@ -50,9 +50,7 @@ function main() {
   $previewPanel = $("#preview-panel");
   $udlPanel = $("#udl-panel");
 
-  loadPrevieHtml();
-  loadUdlBaseFile();
-  loadUdl2CssJson();
+  loadPrevieHtml().then(loadUdlBaseFile()).then(loadUdl2CssJson());
 }
 
 function loadPrevieHtml() {
@@ -91,7 +89,6 @@ function getInitialValue(json) {
 
 function updateUdlValue(id, json, value) {
   if (!UPDATE_UDL) return;
-  debugger;
   var sel = getUdlSelection(json);
   if (sel) {
     sel.attr(json.udlAttr, value);
