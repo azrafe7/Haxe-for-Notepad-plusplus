@@ -34,6 +34,10 @@ pre {
   padding-top: 1em;
 }
 
+#settings-panel .sc {
+  text-transform: uppercase;
+}
+
 /*hide alpha slider*/
 .cp-hsvpanel-a {
   display: none !important;
