@@ -1,7 +1,7 @@
 "use strict";
 
 var DEBUG = true;
-var UPDATE_UDL = true; // slow
+var UPDATE_UDL = true;
 
 var previewFile = "preview.html";
 var udl2cssFile = "stylemap.json";
@@ -11,7 +11,9 @@ var $settingsPanel;
 var $previewPanel;
 var $udlPanel;
 
-var xml;
+var originalPreview;
+var originalUdl;
+var clonedUdl;
 var mappings;
 var tiny;
 
@@ -24,7 +26,9 @@ function init() {
   $settingsPanel = null;
   $previewPanel = null;
   $udlPanel = null;
-  xml = null;
+  originalPreview = null;
+  originalUdl = null;
+  clonedUdl = null;
   mappings = null;
   $inputs = {};
   swatches = [];
@@ -57,6 +61,7 @@ function loadPrevieHtml() {
   var xhr = fetchUrl(previewFile, $previewPanel, "html");
   xhr.done(function(data) {
     //console.log(data);
+    originalPreview = data;
     $previewPanel.html(data);
     return xhr;
   });
@@ -74,7 +79,7 @@ function getCssSelection(json) {
 }
 
 function getUdlSelection(json) {
-  if (json.udlSelector) return $(xml).find(json.udlSelector);
+  if (json.udlSelector) return $(clonedUdl).find(json.udlSelector);
   else return null;
 }
 
@@ -92,7 +97,7 @@ function updateUdlValue(id, json, value) {
   var sel = getUdlSelection(json);
   if (sel) {
     sel.attr(json.udlAttr, value);
-    updateUdl(xml);
+    updateUdl(clonedUdl);
   }
 }
 
@@ -243,17 +248,20 @@ function addPagination() {
 }
 
 function updateUdl(xmlData) {
-  xml = xmlData;
-  //console.log(xml);
+  if (!originalUdl) {
+    originalUdl = xmlData;
+    var data = xmlSerializer.serializeToString(originalUdl);
+    
+    // clone and remove some sections
+    clonedUdl = $.parseXML(data);
+    $(clonedUdl).find('Settings, KeywordLists').html("...");
+  }
+  
+  //console.log(xmlData);
   $udlPanel.html('<pre class="language-xml"><code>');
   //var escapedData = $('<div/>').text(data).html();
-  var data = xmlSerializer.serializeToString(xmlData);
   
-  // clone and remove some sections
-  var clonedXml = $.parseXML(data);
-  $(clonedXml).find('Settings, KeywordLists').html("...");
-  
-  $udlPanel.find('code').text(xmlSerializer.serializeToString(clonedXml));
+  $udlPanel.find('code').text(xmlSerializer.serializeToString(clonedUdl));
   Prism.highlightElement($udlPanel.find("pre code")[0]);
 }
 
