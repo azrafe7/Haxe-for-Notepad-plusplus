@@ -3,9 +3,17 @@
 var DEBUG = true;
 var UPDATE_UDL = true;
 
+/* 
+  these can be overridden by passing in values as url params:
+    preview=preview_filename&
+    stylemap=stylemap_filename&
+    udl=udl_filename
+*/
 var previewFile = "preview.haxe.html";
 var udl2cssFile = "stylemap.haxe.json";
 var udlBaseFile = "udl.haxe.xml";
+
+var urlParams;
 
 var $settingsPanel;
 var $previewPanel;
@@ -23,6 +31,21 @@ var xmlSerializer;
 var $inputs;
 var swatches;
 
+function getUrlParams() {
+  var dict = {};
+  var query = window.location.search.substring(1).split("&");
+  for (var i = 0; i < query.length; i++)
+  {
+    if (query[i] === "") // check for trailing & with no param
+      continue;
+
+    var param = query[i].split("=");
+    dict[decodeURIComponent(param[0])] = decodeURIComponent(param[1] || "");
+  }
+  
+  return dict;
+}
+
 function init() {
   $settingsPanel = null;
   $previewPanel = null;
@@ -32,6 +55,11 @@ function init() {
   originalUdl2Css = null;
   clonedUdl = null;
   xmlSerializer = new XMLSerializer();
+  
+  urlParams = getUrlParams();
+  if (urlParams['preview']) previewFile = urlParams['preview'];
+  if (urlParams['stylemap']) udl2cssFile = urlParams['stylemap'];
+  if (urlParams['udl']) udlBaseFile = urlParams['udl'];
 }
 
 $(function() {
