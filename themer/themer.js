@@ -2,6 +2,9 @@
 
 var DEBUG = true;
 var UPDATE_UDL = true;
+var NO_DOM_PICKER = false;
+
+var DOMPickerSupported = false;
 
 /* 
   these can be overridden by passing in values as url params:
@@ -84,6 +87,48 @@ function main() {
   $("button#reset-all").click(function(e) { resetAll(); e.preventDefault(); $(this).blur(); });
   $("button#export-udl").click(function(e) { exportUdl(); e.preventDefault(); $(this).blur(); });
   loadPrevieHtml().then(loadUdlBaseFile()).then(loadUdl2CssJson());
+  
+  if (document.elementFromPoint && document.body.scrollIntoView && !NO_DOM_PICKER) {
+    DOMPickerSupported = true;
+    $previewPanel.on('click', function(evt) {
+      var el = document.elementFromPoint(evt.clientX, evt.clientY);
+      if (el) showInputFor(el);
+    });
+  }
+  console.log("DOMPickerSupported", DOMPickerSupported);
+}
+
+function showInputFor(previewEl) {
+  if (!($settingsPanel.find('input'))) return;
+  
+  //console.log("picked:", previewEl);
+  var i = 0;
+  var found = false;
+  $.each($inputs, function(key, item) {
+    var $cssSel = $(getCssSelection(item.json));
+    var filtered = $cssSel.filter([previewEl]);
+    if (filtered.length) {
+      //console.log("matched input:", item.el);
+      found = item;
+    }
+  });
+  
+  if (!found) {
+    console.log("matching input NOT FOUND");
+  }
+  else // activate parent nav-tab and scroll input into view
+  {
+    var $input = found.el;
+    var $navTabs = $input.parents('.panel-body').find('.nav-tabs');
+    var tabId = $input.parents('.tab-pane').attr('id');
+    $navTabs.find('li a[href="#' + tabId + '"]').tab('show');
+    found.el.focus();
+    var $popover = $(".popover-content");
+    $popover[0].scrollIntoView({
+        behavior: "smooth",
+        block: "end"
+    });
+  }
 }
 
 // https://stackoverflow.com/questions/2897619/using-html5-javascript-to-generate-and-save-a-file#answer-18197511
@@ -256,14 +301,19 @@ function createTextInput(id, label, value, json) {
 
 var inputID = 0;
 function createInputFor(jsonData, value) {
+  var $formEl;
+  
   if (jsonData.type === "color") {
-    return createColorInput(jsonData.type + inputID++, jsonData.label, value, jsonData);
+    $formEl = createColorInput(jsonData.type + inputID++, jsonData.label, value, jsonData);
   }
   else if (jsonData.type === "text") {
-    return createTextInput(jsonData.type + inputID++, jsonData.label, value, jsonData);
+    $formEl = createTextInput(jsonData.type + inputID++, jsonData.label, value, jsonData);
   } else {
-    return createTextInput(jsonData.type + inputID++, jsonData.label, value, jsonData);
+    $formEl = createTextInput(jsonData.type + inputID++, jsonData.label, value, jsonData);
   }
+  
+  $formEl.find('input').attr('data-input-idx', inputID - 1);
+  return $formEl;
 }
 
 function resetSettings(json) {
