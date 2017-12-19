@@ -307,7 +307,8 @@ function addPagination() {
   '<ul class="nav nav-tabs" role="tablist">' +
   '  <li role="presentation" class="active"><a href="#tab0" aria-controls="main" role="tab" data-toggle="tab">Main</a></li>' +
   '  <li role="presentation"><a href="#tab1" aria-controls="secondary" role="tab" data-toggle="tab">Secondary</a></li>' +
-  '  <li role="presentation"><a href="#tab2" aria-controls="extra" role="tab" data-toggle="tab">Extra</a></li>' +
+  '  <li class="hidden" role="presentation"><a href="#tab2" aria-controls="extra" role="tab" data-toggle="tab">Extra</a></li>' +
+  '  <li class="hidden" role="presentation"><a href="#tab3" aria-controls="extra 2" role="tab" data-toggle="tab">Extra 2</a></li>' +
   '</ul>' +
   '' +
   '<!-- Tab panes -->' +
@@ -315,6 +316,7 @@ function addPagination() {
   '  <div role="tabpanel" class="tab-pane active" id="tab0"></div>' +
   '  <div role="tabpanel" class="tab-pane" id="tab1"></div>' +
   '  <div role="tabpanel" class="tab-pane" id="tab2"></div>' +
+  '  <div role="tabpanel" class="tab-pane" id="tab3"></div>' +
   '</div>' +
   '</div>';
   
@@ -322,7 +324,10 @@ function addPagination() {
   var i = 0;
   $.each($inputs, function(key, item) {
     var tabNum = Math.floor(i / 7);
-    $tabs.find('#tab' + tabNum).append(item.formEl);
+    var $tab = $tabs.find('#tab' + tabNum);
+    var $navTab = $tabs.find('li:eq(' + tabNum + ')');
+    if ($navTab.hasClass("hidden")) $navTab.removeClass('hidden');
+    $tab.append(item.formEl);
     i++;
   });
   
