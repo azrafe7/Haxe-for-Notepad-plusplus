@@ -133,7 +133,7 @@
       "cssAttr": "color"
     },
     {
-      "label": "folding in code 1",
+      "label": "folding in code 2",
       "type": "color",
       "udlSelector": "WordsStyle[name='FOLDER IN CODE2']",
       "udlAttr": "fgColor",
