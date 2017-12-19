@@ -29,8 +29,10 @@ UDL 2.1 Themer
 --------------
 You can customize the theme in the browser with this [little tool](https://rawgit.com/azrafe7/Haxe-for-Notepad-plusplus/master/themer/themer.html) (WIP).
 
+It works by mapping udl to css and back (mappings are in `stylemap.json`).
+The `preview.html` file is directly exported from Notepad++ (Plugins->NPPExport->Export to HTML), and injected as is.
+It can be used to live preview other udl files using `generic-stylemap.json` or writing custom mappings file.
 
-Use it however you like it. 
 
 LICENSE (MIT)
 -------------
