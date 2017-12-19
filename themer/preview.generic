@@ -1,0 +1,36 @@
+/* 
+  //{
+    folding in comment
+  //}
+*/
+// comment
+
+default
+
+{
+  folding in code 1
+}
+
+[
+  folding in code 2
+]
+
+KW1
+KW2
+KW3
+KW4
+KW5
+KW6
+KW7
+KW8
+
+* // operators
+
+/1 delim 1/
+/2 delim 2/
+/3 delim 3/
+/4 delim 4/
+/5 delim 5/
+/6 delim 6/
+/7 delim 7/
+/8 delim 8/

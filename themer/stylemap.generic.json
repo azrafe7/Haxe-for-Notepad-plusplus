@@ -1,0 +1,216 @@
+{
+  "mappings-item-schema": {
+    "label": "description",
+    "type": "color|text",
+    "udlSelector": "single xml selector (that maps to cssSelectors, e.g. WordsStyle[name='COMMENTS']). Can be empty (as is the case for default background)",
+    "udlAttr": "single attr to change, e.g. bgColor",
+    "cssSelectors": ["array", "of", "css", "selectors", "(relative to preview.html body)"],
+    "cssAttr": "single attr to change, e.g. background-color"
+  },
+  "mappings": [
+    {
+      "label": "language name",
+      "type": "text",
+      "udlSelector": "UserLang",
+      "udlAttr": "name"
+    },
+    {
+      "label": "global background color",
+      "type": "color",
+      "cssSelectors": ["div:first-of-type", ""],
+      "cssAttr": "background-color"
+    },
+    {
+      "label": "default text color",
+      "type": "color",
+      "udlSelector": "WordsStyle[name='DEFAULT']",
+      "udlAttr": "fgColor",
+      "cssSelectors": [".sc0"],
+      "cssAttr": "color"
+    },
+    {
+      "label": "comment block",
+      "type": "color",
+      "udlSelector": "WordsStyle[name='COMMENTS']",
+      "udlAttr": "fgColor",
+      "cssSelectors": [".sc1"],
+      "cssAttr": "color"
+    },
+    {
+      "label": "line comment",
+      "type": "color",
+      "udlSelector": "WordsStyle[name='LINE COMMENTS']",
+      "udlAttr": "fgColor",
+      "cssSelectors": [".sc2"],
+      "cssAttr": "color"
+    },
+    {
+      "label": "numbers",
+      "type": "color",
+      "udlSelector": "WordsStyle[name='NUMBERS']",
+      "udlAttr": "fgColor",
+      "cssSelectors": [".sc3"],
+      "cssAttr": "color"
+    },
+    {
+      "label": "keywords 1",
+      "type": "color",
+      "udlSelector": "WordsStyle[name='KEYWORDS1']",
+      "udlAttr": "fgColor",
+      "cssSelectors": [".sc4"],
+      "cssAttr": "color"
+    },
+    {
+      "label": "keywords 2",
+      "type": "color",
+      "udlSelector": "WordsStyle[name='KEYWORDS2']",
+      "udlAttr": "fgColor",
+      "cssSelectors": [".sc5"],
+      "cssAttr": "color"
+    },
+    {
+      "label": "keywords 3",
+      "type": "color",
+      "udlSelector": "WordsStyle[name='KEYWORDS3']",
+      "udlAttr": "fgColor",
+      "cssSelectors": [".sc6"],
+      "cssAttr": "color"
+    },
+    {
+      "label": "keywords 4",
+      "type": "color",
+      "udlSelector": "WordsStyle[name='KEYWORDS4']",
+      "udlAttr": "fgColor",
+      "cssSelectors": [".sc7"],
+      "cssAttr": "color"
+    },
+    {
+      "label": "keywords 5",
+      "type": "color",
+      "udlSelector": "WordsStyle[name='KEYWORDS5']",
+      "udlAttr": "fgColor",
+      "cssSelectors": [".sc8"],
+      "cssAttr": "color"
+    },
+    {
+      "label": "keywords 6",
+      "type": "color",
+      "udlSelector": "WordsStyle[name='KEYWORDS6']",
+      "udlAttr": "fgColor",
+      "cssSelectors": [".sc9"],
+      "cssAttr": "color"
+    },
+    {
+      "label": "keywords  7",
+      "type": "color",
+      "udlSelector": "WordsStyle[name='KEYWORDS7']",
+      "udlAttr": "fgColor",
+      "cssSelectors": [".sc10"],
+      "cssAttr": "color"
+    },
+    {
+      "label": "keywords 8",
+      "type": "color",
+      "udlSelector": "WordsStyle[name='KEYWORDS8']",
+      "udlAttr": "fgColor",
+      "cssSelectors": [".sc11"],
+      "cssAttr": "color"
+    },
+    {
+      "label": "operators",
+      "type": "color",
+      "udlSelector": "WordsStyle[name='OPERATORS']",
+      "udlAttr": "fgColor",
+      "cssSelectors": [".sc12"],
+      "cssAttr": "color"
+    },
+    {
+      "label": "folding in code 1",
+      "type": "color",
+      "udlSelector": "WordsStyle[name='FOLDER IN CODE1']",
+      "udlAttr": "fgColor",
+      "cssSelectors": [".sc13"],
+      "cssAttr": "color"
+    },
+    {
+      "label": "folding in code 1",
+      "type": "color",
+      "udlSelector": "WordsStyle[name='FOLDER IN CODE2']",
+      "udlAttr": "fgColor",
+      "cssSelectors": [".sc14"],
+      "cssAttr": "color"
+    },
+    {
+      "label": "folding in comments",
+      "type": "color",
+      "udlSelector": "WordsStyle[name='FOLDER IN COMMENT']",
+      "udlAttr": "fgColor",
+      "cssSelectors": [".sc15"],
+      "cssAttr": "color"
+    },
+    {
+      "label": "delimiters 1",
+      "type": "color",
+      "udlSelector": "WordsStyle[name='DELIMITERS1']",
+      "udlAttr": "fgColor",
+      "cssSelectors": [".sc16"],
+      "cssAttr": "color"
+    },
+    {
+      "label": "delimiters 2",
+      "type": "color",
+      "udlSelector": "WordsStyle[name='DELIMITERS2']",
+      "udlAttr": "fgColor",
+      "cssSelectors": [".sc17"],
+      "cssAttr": "color"
+    },
+    {
+      "label": "delimiters 3",
+      "type": "color",
+      "udlSelector": "WordsStyle[name='DELIMITERS3']",
+      "udlAttr": "fgColor",
+      "cssSelectors": [".sc18"],
+      "cssAttr": "color"
+    },
+    {
+      "label": "delimiters 4",
+      "type": "color",
+      "udlSelector": "WordsStyle[name='DELIMITERS4']",
+      "udlAttr": "fgColor",
+      "cssSelectors": [".sc19"],
+      "cssAttr": "color"
+    },
+    {
+      "label": "delimiters 5",
+      "type": "color",
+      "udlSelector": "WordsStyle[name='DELIMITERS5']",
+      "udlAttr": "fgColor",
+      "cssSelectors": [".sc20"],
+      "cssAttr": "color"
+    },
+    {
+      "label": "delimiters 6",
+      "type": "color",
+      "udlSelector": "WordsStyle[name='DELIMITERS6']",
+      "udlAttr": "fgColor",
+      "cssSelectors": [".sc21"],
+      "cssAttr": "color"
+    },
+    {
+      "label": "delimiters  7",
+      "type": "color",
+      "udlSelector": "WordsStyle[name='DELIMITERS7']",
+      "udlAttr": "fgColor",
+      "cssSelectors": [".sc22"],
+      "cssAttr": "color"
+    },
+    {
+      "label": "delimiters 8",
+      "type": "color",
+      "udlSelector": "WordsStyle[name='DELIMITERS8']",
+      "udlAttr": "fgColor",
+      "cssSelectors": [".sc23"],
+      "cssAttr": "color"
+    }
+  ]
+}
