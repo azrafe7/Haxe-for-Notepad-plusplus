@@ -3,9 +3,9 @@
 var DEBUG = true;
 var UPDATE_UDL = true;
 
-var previewFile = "preview.html";
-var udl2cssFile = "stylemap.json";
-var udlBaseFile = "udl.xml";
+var previewFile = "preview.haxe.html";
+var udl2cssFile = "stylemap.haxe.json";
+var udlBaseFile = "udl.haxe.xml";
 
 var $settingsPanel;
 var $previewPanel;
