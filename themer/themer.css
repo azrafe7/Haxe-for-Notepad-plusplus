@@ -26,6 +26,11 @@ pre {
   white-space: pre;
 }
 
+.panel-title span {
+  padding-top: .2em;
+  color: #bbb;
+}
+
 #settings-panel .form-group {
   margin-bottom: 10px;
 }

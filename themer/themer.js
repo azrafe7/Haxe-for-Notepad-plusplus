@@ -113,6 +113,11 @@ function exportUdl() {
   download(langName + ".xml", exportData);
 }
 
+function setPanelFile($panel, filename) {
+  filename = filename.split('/').pop();
+  $panel.parents('.panel').find('.panel-title span').text(filename);
+}
+
 function resetAll() {
   resetPreview(originalPreview);
   resetUdl(originalUdl, true);
@@ -121,6 +126,7 @@ function resetAll() {
 
 function resetPreview(html) {
   $previewPanel.html(html);
+  setPanelFile($previewPanel, previewFile);
 }
 
 function loadPrevieHtml() {
@@ -159,6 +165,7 @@ function getInitialValue(json) {
 }
 
 function updateUdlValue(id, json, value) {
+  setPanelFile($udlPanel, udlBaseFile);
   if (!UPDATE_UDL) return;
   var sel = getUdlSelection(json);
   if (sel) {
@@ -261,6 +268,7 @@ function createInputFor(jsonData, value) {
 
 function resetSettings(json) {
   //console.log(json);
+  setPanelFile($settingsPanel, udl2cssFile);
   if (!originalUdl2Css) {
     originalUdl2Css = json;
   }
