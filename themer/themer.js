@@ -89,6 +89,15 @@ function main() {
   $("button#export-udl").click(function(e) { exportUdl(); e.preventDefault(); $(this).blur(); });
   $.when(loadPrevieHtml()).then($.when(loadUdlBaseFile()).then(loadUdl2CssJson()));
   
+  // scroll color picker into view when focused
+  $settingsPanel.on('focus', 'input.sc', function() {
+    $(this).focus(); // this works (doesn't trigger a recursive death!)
+    $(".popover-content")[0].scrollIntoView({
+      behavior: "smooth",
+      block: "end"
+    });
+  });
+  
   if (document.elementFromPoint && document.body.scrollIntoView && !NO_DOM_PICKER) {
     CodePickerSupported = true;
     $(document.body).on('keydown keyup', function(evt) {
@@ -129,11 +138,6 @@ function showInputFor(previewEl) {
     var tabId = $input.parents('.tab-pane').attr('id');
     $navTabs.find('li a[href="#' + tabId + '"]').tab('show');
     found.el.focus();
-    var $popover = $(".popover-content");
-    $popover[0].scrollIntoView({
-        behavior: "smooth",
-        block: "end"
-    });
   }
 }
 
@@ -358,7 +362,7 @@ function loadUdl2CssJson() {
   var xhr = fetchUrl(udl2cssFile, $settingsPanel, 'json');
   xhr.done(function(data) {
     resetSettings(data);
-    
+  
     return xhr;
   });
 
