@@ -86,7 +86,7 @@ function main() {
 
   $("button#reset-all").click(function(e) { resetAll(); e.preventDefault(); $(this).blur(); });
   $("button#export-udl").click(function(e) { exportUdl(); e.preventDefault(); $(this).blur(); });
-  loadPrevieHtml().then(loadUdlBaseFile()).then(loadUdl2CssJson());
+  $.when(loadPrevieHtml()).then($.when(loadUdlBaseFile()).then(loadUdl2CssJson()));
   
   if (document.elementFromPoint && document.body.scrollIntoView && !NO_DOM_PICKER) {
     DOMPickerSupported = true;
