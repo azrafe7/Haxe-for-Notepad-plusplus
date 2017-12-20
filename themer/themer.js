@@ -4,7 +4,7 @@ var DEBUG = true;
 var UPDATE_UDL = true;
 var NO_DOM_PICKER = false;
 
-var DOMPickerSupported = false;
+var CodePickerSupported = false;
 
 /* 
   these can be overridden by passing in values as url params:
@@ -89,13 +89,13 @@ function main() {
   $.when(loadPrevieHtml()).then($.when(loadUdlBaseFile()).then(loadUdl2CssJson()));
   
   if (document.elementFromPoint && document.body.scrollIntoView && !NO_DOM_PICKER) {
-    DOMPickerSupported = true;
+    CodePickerSupported = true;
     $previewPanel.on('click', function(evt) {
       var el = document.elementFromPoint(evt.clientX, evt.clientY);
       if (el) showInputFor(el);
     });
   }
-  console.log("DOMPickerSupported", DOMPickerSupported);
+  console.log("CodePickerSupported", CodePickerSupported);
 }
 
 function showInputFor(previewEl) {
