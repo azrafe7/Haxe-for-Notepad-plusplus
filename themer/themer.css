@@ -7,6 +7,10 @@ body {
   overflow: hidden;
 }
 
+#preview-panel.ctrl-pressed:hover {
+  cursor: pointer;
+}
+
 .panel-heading {
   cursor: pointer;
 }

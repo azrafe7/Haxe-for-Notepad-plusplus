@@ -5,6 +5,7 @@ var UPDATE_UDL = true;
 var NO_DOM_PICKER = false;
 
 var CodePickerSupported = false;
+var codePickerMode = false;
 
 /* 
   these can be overridden by passing in values as url params:
@@ -90,7 +91,12 @@ function main() {
   
   if (document.elementFromPoint && document.body.scrollIntoView && !NO_DOM_PICKER) {
     CodePickerSupported = true;
+    $(document.body).on('keydown keyup', function(evt) {
+      codePickerMode = evt.ctrlKey || evt.metaKey;
+      $previewPanel.toggleClass('ctrl-pressed', codePickerMode);
+    });
     $previewPanel.on('click', function(evt) {
+      if (!codePickerMode) return;
       var el = document.elementFromPoint(evt.clientX, evt.clientY);
       if (el) showInputFor(el);
     });
