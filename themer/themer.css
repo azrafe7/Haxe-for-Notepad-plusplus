@@ -11,6 +11,12 @@ body {
   cursor: pointer;
 }
 
+#preview-panel span,
+#udl-panel span,
+.panel-title span {
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}
+
 .panel-heading {
   cursor: pointer;
 }
