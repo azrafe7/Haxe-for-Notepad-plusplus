@@ -29,7 +29,7 @@ UDL 2.1 Themer
 --------------
 You can customize the theme in the browser with this [little tool](https://rawgit.com/azrafe7/Haxe-for-Notepad-plusplus/master/themer/themer.html) (WIP).
 
-Hint: ctrl+click on code in the preview panel to jump to the associate udl rule.
+Hint: ctrl+click on code in the preview panel to jump to the associated udl rule.
 
 <sub>It works by mapping udl to css and back again (mappings are in `stylemap.haxe.json`).
 The `preview.haxe.html` file is directly exported from Notepad++ (Plugins->NppExport->Export to HTML), and injected as is.
