@@ -87,7 +87,12 @@ function main() {
 
   $("button#reset-all").click(function(e) { resetAll(); e.preventDefault(); $(this).blur(); });
   $("button#export-udl").click(function(e) { exportUdl(); e.preventDefault(); $(this).blur(); });
-  $.when(loadPrevieHtml()).then($.when(loadUdlBaseFile()).then(loadUdl2CssJson()));
+  
+  loadPrevieHtml().then(function() {
+    loadUdlBaseFile().then(function() {
+      loadUdl2CssJson();
+    });
+  });
   
   // scroll color picker into view when focused
   $settingsPanel.on('focus', 'input.sc', function() {
