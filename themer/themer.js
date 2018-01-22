@@ -368,7 +368,8 @@ function resetSettings(json) {
     reEnableButtons();
   } else { // reset to original (with a little delay)
     console.log('Reset to original UDL');
-    
+
+    $settingPanel.hide();
     setTimeout(function() {
       $.each($inputs, function(key, input) {
         input.el.val(input.el.data('initial-value'));
@@ -376,6 +377,7 @@ function resetSettings(json) {
       });
       
       reEnableButtons();
+      $settingPanel.show();
     }, 0);
  }
 }
