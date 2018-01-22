@@ -371,6 +371,7 @@ function resetSettings(json) {
     
     setTimeout(function() {
       $.each($inputs, function(key, input) {
+        input.el.val(input.el.data('initial-value'));
         input.update(input.el.data('initial-value'));
       });
       
