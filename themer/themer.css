@@ -17,6 +17,10 @@ body {
   font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
 
+.unstyled-code {
+  color: #a98 !important;
+}
+
 .panel-heading {
   cursor: pointer;
 }

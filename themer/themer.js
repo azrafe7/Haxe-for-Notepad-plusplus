@@ -34,6 +34,7 @@ var xmlSerializer;
 
 var $inputs;
 var swatches;
+var inputID = 0;
 
 function getUrlParams() {
   var dict = {};
@@ -186,6 +187,7 @@ function resetAll() {
 
 function resetPreview(html) {
   $previewPanel.html(html);
+  $previewPanel.find('[class^=sc]').addClass('unstyled-code');
   setPanelFile($previewPanel, previewFile);
 }
 
@@ -314,55 +316,75 @@ function createTextInput(id, label, value, json) {
   return form;
 }
 
-var inputID = 0;
 function createInputFor(jsonData, value) {
   var $formEl;
   
   if (jsonData.type === "color") {
-    $formEl = createColorInput(jsonData.type + inputID++, jsonData.label, value, jsonData);
+    $formEl = createColorInput(jsonData.type + '-' + inputID++, jsonData.label, value, jsonData);
   }
   else if (jsonData.type === "text") {
-    $formEl = createTextInput(jsonData.type + inputID++, jsonData.label, value, jsonData);
+    $formEl = createTextInput(jsonData.type + '-' + inputID++, jsonData.label, value, jsonData);
   } else {
-    $formEl = createTextInput(jsonData.type + inputID++, jsonData.label, value, jsonData);
+    $formEl = createTextInput(jsonData.type + '-' + inputID++, jsonData.label, value, jsonData);
   }
   
-  $formEl.find('input').attr('data-input-idx', inputID - 1);
+  var $input = $formEl.find('input');
+  $input.attr('data-input-idx', inputID - 1);
+  $input.attr('data-initial-value', $input.val());
   return $formEl;
 }
 
 function resetSettings(json) {
   //console.log(json);
   setPanelFile($settingsPanel, udl2cssFile);
-  if (!originalUdl2Css) {
-    originalUdl2Css = json;
-  }
+  
+  var firstTime = !originalUdl2Css;
   
   mappings = json.mappings;
-  $settingsPanel.empty();
-  swatches = [];
-  $inputs = {};
-  inputID = 0;
-  
-  // first time (create)
-  for (var i = 0; i < mappings.length; i++) {
-    var item = json.mappings[i];
-    var formEl = createInputFor(item);
-    //$settingsPanel.append(formEl);
-    
-    var id = $(formEl).find('input').attr('id');
-    var $input = $inputs[id];
-    $input.update($input.el.val());
 
-    //console.log(item);
-  }
+  if (firstTime) {
+    originalUdl2Css = json;
+
+    $settingsPanel.empty();
+    swatches = [];
+    $inputs = {};
+    inputID = 0;
+    
+    // first time (create)
+    var i = 0;
+    for (i = 0; i < mappings.length; i++) {
+      var item = json.mappings[i];
+      var formEl = createInputFor(item);
+      
+      var id = $(formEl).find('input').attr('id');
+      var $input = $inputs[id];
+      $input.update($input.el.val());
+
+      //console.log(item);
+    }
+    
+    addPickersAndPagination();
   
-  addPagination();
+    reEnableButtons();
+  } else { // reset to original (with a little delay)
+    console.log('Reset to original UDL');
+    
+    setTimeout(function() {
+      $.each($inputs, function(key, input) {
+        input.update(input.el.data('initial-value'));
+      });
+      
+      reEnableButtons();
+    }, 0);
+ }
+}
+
+function reEnableButtons() {
+  $previewPanel.find('[class^=sc]').removeClass('unstyled-code');
   $("button#reset-all").removeClass("disabled");
   $("button#export-udl").removeClass("disabled");
 }
 
-var $slider;
 function loadUdl2CssJson() {
   var xhr = fetchUrl(udl2cssFile, $settingsPanel, 'json');
   xhr.done(function(data) {
@@ -374,7 +396,7 @@ function loadUdl2CssJson() {
   return xhr;
 }
 
-function addPagination() {
+function addPickersAndPagination() {
   var tabs = '<div>' +
   '<!-- Nav tabs -->' +
   '<ul class="nav nav-tabs" role="tablist">' +
