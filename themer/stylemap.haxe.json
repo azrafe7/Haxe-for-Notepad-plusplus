@@ -145,7 +145,7 @@
       "type": "color",
       "udlSelector": "WordsStyle[name='KEYWORDS6']",
       "udlAttr": "fgColor",
-      "cssSelectors": [".sc10"],
+      "cssSelectors": [".sc9"],
       "cssAttr": "color"
     },
     {
