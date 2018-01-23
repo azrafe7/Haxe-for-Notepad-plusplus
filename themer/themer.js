@@ -187,9 +187,9 @@ function resetAll() {
 }
 
 function resetPreview(html) {
+  if (!firstTime) $('.panel-body').addClass('disabled-panel');
   $previewPanel.html(html);
   $previewPanel.find('[class^=sc]').addClass('unstyled-code');
-  if (!firstTime) $('.panel-body').addClass('disabled-panel');
   
   var bgColor = $('<div />').html(html).find('div:eq(0)').css('background-color'); // extract bg color from preview file
   $previewPanel.css('background-color', bgColor); // extend to container
@@ -289,7 +289,7 @@ function createColorInput(id, label, color, json) {
   
   var update = function(color) {
     $slider.trigger("colorpickersliders.updateColor", color);
-    $slider.trigger("colorpickersliders.show").trigger("colorpickersliders.hide");
+    //$slider.trigger("colorpickersliders.show").trigger("colorpickersliders.hide");
   };
 
   $inputs[id] = {el: $slider, update: update, json: json, formEl:form};
@@ -372,15 +372,16 @@ function resetSettings(json) {
     reEnableButtons();
   } else { // reset to original (with a little delay)
     console.log('Reset to original UDL');
-
-    setTimeout(function() {
-      $.each($inputs, function(key, input) {
-        input.el.val(input.el.data('initial-value'));
-        input.update(input.el.data('initial-value'));
-      });
-      
+    
+    setTimeout(function() { // using a timeout to give time to apply styles
       reEnableButtons();
-    }, 0);
+    }, 800);
+
+    $.each($inputs, function(key, input) {
+      var initialValue = input.el.data('initial-value');
+      input.el.val(initialValue);
+      input.update(initialValue);
+    });
   }
   
   firstTime = false;

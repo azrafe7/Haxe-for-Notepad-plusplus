@@ -17,8 +17,12 @@ body {
   font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
 
+.panel-body {
+  opacity: 1;
+  transition: opacity .4s ease-in-out;
+}
 .disabled-panel {
-  opacity: .7;
+  opacity: .5;
   pointer-events: none;
 }
 
