@@ -190,6 +190,10 @@ function resetPreview(html) {
   $previewPanel.html(html);
   $previewPanel.find('[class^=sc]').addClass('unstyled-code');
   if (!firstTime) $('.panel-body').addClass('disabled-panel');
+  
+  var bgColor = $('<div />').html(html).find('div:eq(0)').css('background-color'); // extract bg color from preview file
+  $previewPanel.css('background-color', bgColor); // extend to container
+  
   setPanelFile($previewPanel, previewFile);
 }
 
