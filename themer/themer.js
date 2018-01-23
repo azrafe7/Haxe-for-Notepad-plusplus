@@ -23,6 +23,7 @@ var $settingsPanel;
 var $previewPanel;
 var $udlPanel;
 
+var firstTime = true;
 var originalPreview;
 var originalUdl;
 var originalUdl2Css;
@@ -188,6 +189,7 @@ function resetAll() {
 function resetPreview(html) {
   $previewPanel.html(html);
   $previewPanel.find('[class^=sc]').addClass('unstyled-code');
+  if (!firstTime) $('.panel-body').addClass('disabled-panel');
   setPanelFile($previewPanel, previewFile);
 }
 
@@ -338,8 +340,6 @@ function resetSettings(json) {
   //console.log(json);
   setPanelFile($settingsPanel, udl2cssFile);
   
-  var firstTime = !originalUdl2Css;
-  
   mappings = json.mappings;
 
   if (firstTime) {
@@ -369,7 +369,6 @@ function resetSettings(json) {
   } else { // reset to original (with a little delay)
     console.log('Reset to original UDL');
 
-    $settingPanel.hide();
     setTimeout(function() {
       $.each($inputs, function(key, input) {
         input.el.val(input.el.data('initial-value'));
@@ -377,15 +376,17 @@ function resetSettings(json) {
       });
       
       reEnableButtons();
-      $settingPanel.show();
     }, 0);
- }
+  }
+  
+  firstTime = false;
 }
 
 function reEnableButtons() {
   $previewPanel.find('[class^=sc]').removeClass('unstyled-code');
   $("button#reset-all").removeClass("disabled");
   $("button#export-udl").removeClass("disabled");
+  $('.panel-body').removeClass('disabled-panel');
 }
 
 function loadUdl2CssJson() {
