@@ -136,7 +136,7 @@ function showInputFor(previewEl) {
   });
   
   if (!found) {
-    console.log("matching input NOT FOUND");
+    console.warn("CodePicker: no matching input for", previewEl);
   }
   else // activate parent nav-tab and scroll input into view
   {
