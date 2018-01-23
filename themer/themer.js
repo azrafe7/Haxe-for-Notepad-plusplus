@@ -188,11 +188,12 @@ function resetAll() {
 
 function resetPreview(html) {
   if (!firstTime) $('.panel-body').addClass('disabled-panel');
-  $previewPanel.html(html);
-  $previewPanel.find('[class^=sc]').addClass('unstyled-code');
   
   var bgColor = $('<div />').html(html).find('div:eq(0)').css('background-color'); // extract bg color from preview file
   $previewPanel.css('background-color', bgColor); // extend to container
+  
+  $previewPanel.html(html);
+  $previewPanel.find('[class^=sc]').addClass('unstyled-code');
   
   setPanelFile($previewPanel, previewFile);
 }
@@ -374,14 +375,14 @@ function resetSettings(json) {
     console.log('Reset to original UDL');
     
     setTimeout(function() { // using a timeout to give time to apply styles
+      $.each($inputs, function(key, input) {
+        var initialValue = input.el.data('initial-value');
+        input.el.val(initialValue);
+        input.update(initialValue);
+      });
+      
       reEnableButtons();
-    }, 800);
-
-    $.each($inputs, function(key, input) {
-      var initialValue = input.el.data('initial-value');
-      input.el.val(initialValue);
-      input.update(initialValue);
-    });
+    }, 600);
   }
   
   firstTime = false;
