@@ -245,11 +245,12 @@ function updateUdlValue(id, json, value) {
 }
 
 function updateColor(inputOrId, color) {
-	var input = typeof inputOrId === "string" ? $inputs[inputOrId] : inputOrId;
-	var json = input.json;
-	var hexColor = tinycolor(color).toHexString();
-	var $sel = getCssSelection(json);
-	$sel.css(json.cssAttr, hexColor);
+    var input = typeof inputOrId === "string" ? $inputs[inputOrId] : inputOrId;
+    color = color.toString(); // force conversion to string
+    var json = input.json;
+    var hexColor = tinycolor(color).toHexString();
+    var $sel = getCssSelection(json);
+    $sel.css(json.cssAttr, hexColor);
 }
 
 function createColorInput(id, label, color, json) {
@@ -278,12 +279,12 @@ function createColorInput(id, label, color, json) {
     //updateinterval: 60,
     onchange: function(container, colortiny) {
       var color = colortiny.tiny.toHexString();
-	  if (json.type === "color") {
-		var sel = getUdlSelection(json);
-		if (sel && sel.attr(json.udlAttr) == color.toUpperCase().substr(1)) return;
-	  }
+    if (json.type === "color") {
+        var sel = getUdlSelection(json);
+        if (sel && sel.attr(json.udlAttr) == color.toUpperCase().substr(1)) return;
+    }
       updateUdlValue(id, json, $(input).val());
-	  updateColor(id, color);
+      updateColor(id, color);
     }
   });
 
@@ -390,11 +391,11 @@ function resetSettings(json) {
       $.each($inputs, function(key, input) {
         var initialValue = input.el.data('initial-value');
         //console.log(["update ", input, key, initialValue]);
-		input.el.val(initialValue);
+        input.el.val(initialValue);
         input.update(initialValue);
-		if (input.json.type === "color") {
-			updateColor(input, initialValue);
-		}
+        if (input.json.type === "color") {
+            updateColor(input, initialValue);
+        }
       });
       
       reEnableButtons();
