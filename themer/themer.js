@@ -238,7 +238,7 @@ function updateUdlValue(id, json, value) {
   if (!UPDATE_UDL) return;
   var sel = getUdlSelection(json);
   if (sel) {
-    if (json.type === "color") value = value.substr(1).toUpperCase(); // strip leading '#'
+    if (json.type === "color") if (value.startsWith("#")) value = value.substr(1).toUpperCase(); // strip leading '#'
     sel.attr(json.udlAttr, value);
     resetUdl(clonedUdl);
   }
@@ -279,12 +279,12 @@ function createColorInput(id, label, color, json) {
     //updateinterval: 60,
     onchange: function(container, colortiny) {
       var color = colortiny.tiny.toHexString();
-    if (json.type === "color") {
-        var sel = getUdlSelection(json);
-        if (sel && sel.attr(json.udlAttr) == color.toUpperCase().substr(1)) return;
-    }
-      updateUdlValue(id, json, $(input).val());
+      if (json.type === "color") {
+          var sel = getUdlSelection(json);
+          if (sel && sel.attr(json.udlAttr) == color.toUpperCase().substr(1)) return;
+      }
       updateColor(id, color);
+      updateUdlValue(id, json, $(input).val());
     }
   });
 
@@ -391,8 +391,8 @@ function resetSettings(json) {
       $.each($inputs, function(key, input) {
         var initialValue = input.el.data('initial-value');
         //console.log(["update ", input, key, initialValue]);
-        input.el.val(initialValue);
-        input.update(initialValue);
+        input.el.val(tinycolor(initialValue));
+        input.update(initialValue.toString()); // force color conversion to string
         if (input.json.type === "color") {
             updateColor(input, initialValue);
         }
@@ -450,7 +450,7 @@ function addPickersAndPagination() {
     var $navTab = $tabs.find('li:eq(' + tabNum + ')');
     if ($navTab.hasClass("hidden")) $navTab.removeClass('hidden');
     $tab.append(item.formEl);
-	item.update(item.el.data('initial-value'));
+    item.update(item.el.data('initial-value'));
     i++;
   });
   
