@@ -390,11 +390,12 @@ function resetSettings(json) {
     setTimeout(function() { // using a timeout to give time to apply styles
       $.each($inputs, function(key, input) {
         var initialValue = input.el.data('initial-value');
+        var newValue = (input.json.type === "color" ? initialValue.toString() : initialValue); // force color conversion to string (if color)
         //console.log(["update ", input, key, initialValue]);
-        input.el.val(tinycolor(initialValue));
-        input.update(initialValue.toString()); // force color conversion to string
+        input.el.val(newValue);
+        input.update(newValue);
         if (input.json.type === "color") {
-            updateColor(input, initialValue);
+            updateColor(input, newValue.toString());
         }
       });
       
