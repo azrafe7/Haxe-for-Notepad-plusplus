@@ -244,6 +244,14 @@ function updateUdlValue(id, json, value) {
   }
 }
 
+function updateColor(inputOrId, color) {
+	var input = typeof inputOrId === "string" ? $inputs[inputOrId] : inputOrId;
+	var json = input.json;
+	var hexColor = tinycolor(color).toHexString();
+	var $sel = getCssSelection(json);
+	$sel.css(json.cssAttr, hexColor);
+}
+
 function createColorInput(id, label, color, json) {
   var form = $('<div class="form-group">' +
     '<small>' +
@@ -268,11 +276,14 @@ function createColorInput(id, label, color, json) {
     },
     labels: {'hslhue':'hue', 'hslsaturation':'saturation', 'hsllightness':'lightness'},
     //updateinterval: 60,
-    onchange: function(container, color) {
-      var hexColor = color.tiny.toHexString(color);
-      var $sel = getCssSelection(json);
-      $sel.css(json.cssAttr, hexColor);
+    onchange: function(container, colortiny) {
+      var color = colortiny.tiny.toHexString();
+	  if (json.type === "color") {
+		var sel = getUdlSelection(json);
+		if (sel && sel.attr(json.udlAttr) == color.toUpperCase().substr(1)) return;
+	  }
       updateUdlValue(id, json, $(input).val());
+	  updateColor(id, color);
     }
   });
 
@@ -294,6 +305,7 @@ function createColorInput(id, label, color, json) {
   };
 
   $inputs[id] = {el: $slider, update: update, json: json, formEl:form};
+  updateColor(id, color);
 
   return form;
 }
@@ -365,7 +377,7 @@ function resetSettings(json) {
       var $input = $inputs[id];
       $input.update($input.el.val());
 
-      //console.log(item);
+      //console.log({item:item, id:id, input:$input, val:$input.el.val()});
     }
     
     addPickersAndPagination();
@@ -377,8 +389,12 @@ function resetSettings(json) {
     setTimeout(function() { // using a timeout to give time to apply styles
       $.each($inputs, function(key, input) {
         var initialValue = input.el.data('initial-value');
-        input.el.val(initialValue);
+        //console.log(["update ", input, key, initialValue]);
+		input.el.val(initialValue);
         input.update(initialValue);
+		if (input.json.type === "color") {
+			updateColor(input, initialValue);
+		}
       });
       
       reEnableButtons();
@@ -433,6 +449,7 @@ function addPickersAndPagination() {
     var $navTab = $tabs.find('li:eq(' + tabNum + ')');
     if ($navTab.hasClass("hidden")) $navTab.removeClass('hidden');
     $tab.append(item.formEl);
+	item.update(item.el.data('initial-value'));
     i++;
   });
   
