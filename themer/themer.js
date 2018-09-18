@@ -516,6 +516,10 @@ function fetchUrl(url, $container, dataType) {
   xhr.fail(function(xhr, status, errorStr) {
     $container.html($('<div role="alert">').addClass('alert alert-danger').html("Failed to load <strong>'" + url + "'</strong>: " + errorStr));
     console.error("Failed to load '" + url + "':", status, errorStr);
+    $container[0].scrollIntoView({
+      behavior: "smooth",
+      block: "end"
+    });
     return xhr;
   });
 
