@@ -37,7 +37,7 @@ _Hint_: **CTRL+click** on code in the preview panel to jump to the associated ud
 
 <sub>The `preview.haxe.html` file is directly exported from Notepad++ (Plugins->NppExport->Export to HTML), and injected as is.</sub>
 
-<sub>It can be used to live-preview and edit other udl files using `stylemap.generic.json` ([example LESS](https://rawgit.com/azrafe7/Haxe-for-Notepad-plusplus/master/themer/themer.html?udl=https://rawgit.com/azrafe7/LESS-for-Notepad-plusplus/master/less.xml&stylemap=stylemap.generic.json&preview=https://rawgit.com/azrafe7/LESS-for-Notepad-plusplus/master/preview.less.html)), or using a custom style-mapping file ([like stylemap.haxe.json](themer/stylemap.haxe.json)).</sub>
+<sub>It can be used to live-preview and edit other udl files using `stylemap.generic.json` ([example LESS](https://rawgit.com/azrafe7/Haxe-for-Notepad-plusplus/master/themer/themer.html?udl=https://rawgit.com/azrafe7/LESS-for-Notepad-plusplus/master/less.xml&stylemap=stylemap.generic.json&preview=https://rawgit.com/azrafe7/LESS-for-Notepad-plusplus/master/preview.less.html)), or using a custom style-mapping file ([f.e. see stylemap.haxe.json](themer/stylemap.haxe.json)).</sub>
 
 
 LICENSE (MIT)
