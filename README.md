@@ -9,9 +9,9 @@ Just an xml file that gives you syntax highlighting/coloring for .hx files insid
 
 How to Use it
 -------------
- - Download the [haxe.xml](haxe.xml) file (or [haxe-light.xml](haxe-light.xml))
+ - Download the [haxe-dark.xml](haxe-dark.xml) file (or [haxe-light.xml](haxe-light.xml))
  - Open Notepad++
- - Go to  `Language -> Define your language...`,  click on  `Import...` and select the `haxe.xml` file you've downloaded
+ - Go to  `Language -> Define your language...`,  click on  `Import...` and select the `haxe-dark.xml` file you've downloaded
  - Close and restart Notepad++
  - Done
 
@@ -19,7 +19,7 @@ Screenshots
 -----
 Here's a preview of how it looks like:
 
-[haxe.xml](haxe.xml) | [preview](https://rawgit.com/azrafe7/Haxe-for-Notepad-plusplus/master/themer/themer.html?udl=../haxe.xml)
+[haxe-dark.xml](haxe-dark.xml) | [preview](https://rawgit.com/azrafe7/Haxe-for-Notepad-plusplus/master/themer/themer.html?udl=../haxe-dark.xml)
 ![](preview.png)
 
 [haxe-light.xml](haxe-light.xml) | [preview](https://rawgit.com/azrafe7/Haxe-for-Notepad-plusplus/master/themer/themer.html?udl=../haxe-light.xml&bg=FFFFFF)

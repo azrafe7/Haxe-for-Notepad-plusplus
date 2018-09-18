@@ -16,7 +16,7 @@ var codePickerMode = false;
 */
 var previewFile = "preview.haxe.html";
 var udl2cssFile = "stylemap.haxe.json";
-var udlBaseFile = "udl.haxe.xml";
+var udlBaseFile = "../haxe-dark.xml";
 var backgroundColor = null;
 
 var urlParams;
