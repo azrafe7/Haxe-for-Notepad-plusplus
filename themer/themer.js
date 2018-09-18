@@ -11,11 +11,13 @@ var codePickerMode = false;
   these can be overridden by passing in values as url params:
     preview=preview_filename&
     stylemap=stylemap_filename&
-    udl=udl_filename
+    udl=udl_filename&
+    bg=c010r
 */
 var previewFile = "preview.haxe.html";
 var udl2cssFile = "stylemap.haxe.json";
 var udlBaseFile = "udl.haxe.xml";
+var backgroundColor = null;
 
 var urlParams;
 
@@ -66,6 +68,7 @@ function init() {
   if (urlParams['preview']) previewFile = urlParams['preview'];
   if (urlParams['stylemap']) udl2cssFile = urlParams['stylemap'];
   if (urlParams['udl']) udlBaseFile = urlParams['udl'];
+  if (urlParams['bg']) backgroundColor = tinycolor(urlParams['bg']).toHexString();
 }
 
 $(function() {
@@ -189,7 +192,16 @@ function resetAll() {
 function resetPreview(html) {
   if (!firstTime) $('.panel-body').addClass('disabled-panel');
   
-  var bgColor = $('<div />').html(html).find('div:eq(0)').css('background-color'); // extract bg color from preview file
+  var $fragment = $('<div />').html(html).find("div:eq(0)");
+  
+  // override background color
+  if (backgroundColor != null) {
+    $fragment.css('background-color', backgroundColor);
+    var bodyRegex = /<body>[\s\S]*<\/body>/mi;
+    html = html.replace(bodyRegex, "<body>\n" + $fragment[0].outerHTML + "\n</body>");
+  }
+  
+  var bgColor = $fragment.css('background-color'); // extract bg color from preview file
   $previewPanel.css('background-color', bgColor); // extend to container
   
   $previewPanel.html(html);
