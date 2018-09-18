@@ -364,7 +364,7 @@ function resetSettings(json) {
     originalUdl2Css = json;
 
     $settingsPanel.empty();
-    swatches = [];
+    swatches = ["#000000", "#FFFFFF"];
     $inputs = {};
     inputID = 0;
     
