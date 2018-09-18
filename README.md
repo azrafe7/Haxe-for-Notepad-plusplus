@@ -19,10 +19,10 @@ Screenshots
 -----
 Here's a preview of how it looks like:
 
-[haxe.xml](haxe.xml) | <small>[preview](https://rawgit.com/azrafe7/Haxe-for-Notepad-plusplus/master/themer/themer.html?udl=../haxe.xml)</small>
+[haxe.xml](haxe.xml) | [preview](https://rawgit.com/azrafe7/Haxe-for-Notepad-plusplus/master/themer/themer.html?udl=../haxe.xml)
 ![](preview.png)
 
-[haxe-light.xml](haxe-light.xml) | <small>[preview](https://rawgit.com/azrafe7/Haxe-for-Notepad-plusplus/master/themer/themer.html?udl=../haxe-light.xml&bg=FFFFFF)</small>
+[haxe-light.xml](haxe-light.xml) | [preview](https://rawgit.com/azrafe7/Haxe-for-Notepad-plusplus/master/themer/themer.html?udl=../haxe-light.xml&bg=FFFFFF)
 ![](preview-light.png)
 
 Thanks to [@yellowafterlife](https://yal.cc/notepad-pp-syntax-highlighting-for-haxe-2/) for the original work, and to the contributors of [haxe-TmLanguage](https://github.com/vshaxe/haxe-TmLanguage/).
