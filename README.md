@@ -31,11 +31,13 @@ UDL 2.1 Themer
 --------------
 You can customize the theme in the browser with this [little tool](https://rawgit.com/azrafe7/Haxe-for-Notepad-plusplus/master/themer/themer.html) (WIP).
 
-Hint: **CTRL + click** on code in the preview panel to jump to the associated udl rule.
+_Hint_: **CTRL + click** on code in the preview panel to jump to the associated udl rule.
 
-<sub>It works by mapping udl to css and back again (mappings are in `stylemap.haxe.json`).
-The `preview.haxe.html` file is directly exported from Notepad++ (Plugins->NppExport->Export to HTML), and injected as is.
-It can be used to live-preview other udl files using `stylemap.generic.json` ([example LESS](https://rawgit.com/azrafe7/Haxe-for-Notepad-plusplus/master/themer/themer.html?udl=https://rawgit.com/azrafe7/LESS-for-Notepad-plusplus/master/less.xml&stylemap=stylemap.generic.json&preview=https://rawgit.com/azrafe7/LESS-for-Notepad-plusplus/master/preview.less.html)) or writing a custom mappings file.</sub>
+<sub>It works by mapping udl to css and back again (mappings are in `stylemap.haxe.json`).</sub>
+
+<sub>The `preview.haxe.html` file is directly exported from Notepad++ (Plugins->NppExport->Export to HTML), and injected as is.</sub>
+
+<sub>It can be used to live-preview other udl files using `stylemap.generic.json` ([example LESS](https://rawgit.com/azrafe7/Haxe-for-Notepad-plusplus/master/themer/themer.html?udl=https://rawgit.com/azrafe7/LESS-for-Notepad-plusplus/master/less.xml&stylemap=stylemap.generic.json&preview=https://rawgit.com/azrafe7/LESS-for-Notepad-plusplus/master/preview.less.html)) or writing a custom mappings file.</sub>
 
 
 LICENSE (MIT)
